@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -34,8 +37,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
-    implementation 'com.google.dagger:dagger:2.20'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.20'
+    // dagger
+    kapt "com.google.dagger:dagger-compiler:2.20"
+    implementation "com.google.dagger:dagger:2.20"
+    // dagger android
+    kapt "com.google.dagger:dagger-android-processor:2.20"
+    implementation "com.google.dagger:dagger-android:2.20"
+    implementation "com.google.dagger:dagger-android-support:2.20"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
