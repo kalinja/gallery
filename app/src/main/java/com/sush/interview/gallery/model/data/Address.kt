@@ -1,4 +1,4 @@
-package com.sush.interview.gallery.model
+package com.sush.interview.gallery.model.data
 
 data class Address(
     val street: String,
