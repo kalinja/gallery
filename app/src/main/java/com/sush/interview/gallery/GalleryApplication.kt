@@ -20,5 +20,4 @@ class GalleryApplication : Application(), HasActivityInjector {
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = activityInjector
-
 }
