@@ -28,6 +28,8 @@ class AlbumActivity : BaseActivity() {
         albumName = intent.getStringExtra(EXTRA_ALBUM_NAME)
         albumId = intent.getIntExtra(EXTRA_ALBUM_ID, 1)
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun getFragment(): Fragment {
