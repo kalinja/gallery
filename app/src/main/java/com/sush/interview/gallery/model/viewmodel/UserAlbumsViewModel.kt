@@ -1,8 +1,9 @@
-package com.sush.interview.gallery.model
+package com.sush.interview.gallery.model.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 

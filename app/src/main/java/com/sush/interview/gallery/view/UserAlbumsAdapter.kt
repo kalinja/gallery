@@ -1,10 +1,12 @@
 package com.sush.interview.gallery.view
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sush.interview.gallery.R
+import com.sush.interview.gallery.activity.AlbumActivity
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 import com.sush.interview.gallery.model.data.UserAlbum
@@ -120,5 +122,8 @@ class AlbumViewHolder(private val view: View) : UserAlbumViewHolder(view) {
     fun setAlbum(album: Album) {
         this.album = album
         view.albumName.text = album.title
+        view.setOnClickListener {
+            AlbumActivity.call(view.context, album.id, album.title)
+        }
     }
 }

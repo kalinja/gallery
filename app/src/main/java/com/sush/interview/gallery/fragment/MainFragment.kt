@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import com.sush.interview.gallery.GalleryApplication
 import com.sush.interview.gallery.R
 import com.sush.interview.gallery.model.GalleryRepository
-import com.sush.interview.gallery.model.UserAlbumsViewModel
+import com.sush.interview.gallery.model.viewmodel.UserAlbumsViewModel
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 import com.sush.interview.gallery.view.UserAlbumsAdapter
@@ -39,7 +39,8 @@ class MainFragment : Fragment() {
 
         GalleryApplication.instance.getApplicationComponent().inject(this)
 
-        userAlbumsViewModel = ViewModelProviders.of(activity as AppCompatActivity, UserAlbumsViewModel.Factory(galleryRepo)).get(UserAlbumsViewModel::class.java)
+        userAlbumsViewModel = ViewModelProviders.of(activity as AppCompatActivity, UserAlbumsViewModel.Factory(galleryRepo)).get(
+            UserAlbumsViewModel::class.java)
         userAlbumsViewModel.userList.observeForever {
             if (it != null) {
                 usersLoaded(it)
