@@ -7,6 +7,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import com.sush.interview.gallery.model.data.Photo
+import com.sush.interview.gallery.view.GridViewItem
 
 class ImageAdapter(val context: Context) : BaseAdapter() {
     private var photos = ArrayList<Photo>()
@@ -17,16 +18,18 @@ class ImageAdapter(val context: Context) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val imageView: ImageView
+        val imageView: GridViewItem
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            imageView = ImageView(context)
+            imageView = GridViewItem(context)
             imageView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         } else {
-            imageView = convertView as ImageView
+            imageView = convertView as GridViewItem
         }
-        Picasso.get().load(photos[position].thumbnailUrl).into(imageView)
+        Picasso.get()
+            .load(photos[position].thumbnailUrl)
+            .into(imageView)
         return imageView
     }
 
