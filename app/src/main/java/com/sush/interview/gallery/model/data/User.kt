@@ -11,4 +11,4 @@ data class User(
     @SerializedName("phone") val phone: String,
     @SerializedName("website") val website: String,
     @SerializedName("company") val company: Company
-)
+) : UserAlbum()

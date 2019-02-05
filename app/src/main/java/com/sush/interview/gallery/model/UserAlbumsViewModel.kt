@@ -1,21 +1,29 @@
 package com.sush.interview.gallery.model
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 
 class UserAlbumsViewModel(private val galleryRepo: GalleryRepository) : ViewModel() {
     var userList = MutableLiveData<List<User>>()
+    var albumList = MutableLiveData<List<Album>>()
 
     init {
-        loadReposFromRepository()
+        loadUsersFromRepository()
+        loadAlbumsFromRepository()
     }
 
-    private fun loadReposFromRepository() {
-        galleryRepo.getUsers { list, error ->
+    private fun loadUsersFromRepository() {
+        galleryRepo.getUsers { list, _ ->
             userList.value = list
+        }
+    }
+
+    private fun loadAlbumsFromRepository() {
+        galleryRepo.getAlbums { list, _ ->
+            albumList.value = list
         }
     }
 

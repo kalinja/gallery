@@ -12,6 +12,7 @@ import com.sush.interview.gallery.GalleryApplication
 import com.sush.interview.gallery.R
 import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.UserAlbumsViewModel
+import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 import com.sush.interview.gallery.view.UserAlbumsAdapter
 import kotlinx.android.synthetic.main.fragment_user_list.*
@@ -23,6 +24,8 @@ class MainFragment : Fragment() {
     lateinit var galleryRepo: GalleryRepository
     private lateinit var userAlbumsViewModel: UserAlbumsViewModel
     private val userAlbumsAdapter: UserAlbumsAdapter = UserAlbumsAdapter()
+    private var usersLoaded = false
+    private var albumsLoaded = false
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -42,11 +45,34 @@ class MainFragment : Fragment() {
                 usersLoaded(it)
             }
         }
+
+        userAlbumsViewModel.albumList.observeForever {
+            if (it != null) {
+                albumsLoaded(it)
+            }
+        }
     }
 
     private fun usersLoaded(users: List<User>) {
+        usersLoaded = true
+        userAlbumsAdapter.usersLoaded(users)
+        if (albumsLoaded) {
+            loadingFinished()
+        }
+    }
+
+    private fun albumsLoaded(albums: List<Album>) {
+        albumsLoaded = true
+        userAlbumsAdapter.albumsLoaded(albums)
+        if (usersLoaded) {
+            loadingFinished()
+        }
+    }
+
+    private fun loadingFinished() {
         progress.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
-        userAlbumsAdapter.usersLoaded(users)
+        userAlbumsAdapter.loadingFinished()
+        userAlbumsAdapter.notifyDataSetChanged()
     }
 }

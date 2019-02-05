@@ -38,10 +38,37 @@ class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
     }
 
     fun getAlbums(completion: (List<Album>?, Error?) -> Unit) {
+        val retrofitApi = retrofit.create(RetrofitApi::class.java)
 
+        val call = retrofitApi.downloadAlbums()
+        call.enqueue(object : Callback<List<Album>> {
+            override fun onFailure(call: Call<List<Album>>, t: Throwable) {
+            }
+
+            override fun onResponse(call: Call<List<Album>>, response: Response<List<Album>>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val users: List<Album> = response.body()!!
+                    completion(users, null)
+                }
+            }
+        })
     }
 
     fun getPhotos(completion: (List<Photo>?, Error?) -> Unit) {
+        val retrofitApi = retrofit.create(RetrofitApi::class.java)
 
+        val call = retrofitApi.downloadPhotos()
+        call.enqueue(object : Callback<List<Photo>> {
+            override fun onFailure(call: Call<List<Photo>>, t: Throwable) {
+            }
+
+            override fun onResponse(call: Call<List<Photo>>, response: Response<List<Photo>>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val users: List<Photo> = response.body()!!
+                    completion(users, null)
+                }
+            }
+
+        })
     }
 }
