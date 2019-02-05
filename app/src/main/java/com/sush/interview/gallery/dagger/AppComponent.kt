@@ -3,6 +3,7 @@ package com.sush.interview.gallery.dagger
 import android.app.Application
 import com.sush.interview.gallery.GalleryApplication
 import com.sush.interview.gallery.activity.MainActivity
+import com.sush.interview.gallery.fragment.MainFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -21,5 +22,5 @@ interface AppComponent {
     }
 
     fun inject(galleryApp: GalleryApplication)
-    fun inject(mainActivity: MainActivity)
+    fun inject(mainFragment: MainFragment)
 }

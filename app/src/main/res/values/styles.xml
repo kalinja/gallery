@@ -1,5 +1,8 @@
 <resources>
-
-
+    <style name="Text"/>
+    <style name="Text.User">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
