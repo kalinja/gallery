@@ -13,8 +13,7 @@ import com.sush.interview.gallery.activity.AlbumActivity.Companion.EXTRA_ALBUM_I
 import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Photo
 import com.sush.interview.gallery.model.viewmodel.PhotosViewModel
-import com.sush.interview.gallery.model.viewmodel.UserAlbumsViewModel
-import com.sush.interview.gallery.view.ImageAdapter
+import com.sush.interview.gallery.adapter.ImageAdapter
 import kotlinx.android.synthetic.main.fragment_album.*
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.sush.interview.gallery.view
+package com.sush.interview.gallery.adapter
 
 import android.content.Context
 import android.view.View

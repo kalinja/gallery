@@ -1,6 +1,5 @@
-package com.sush.interview.gallery.view
+package com.sush.interview.gallery.adapter
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,8 @@ import com.sush.interview.gallery.activity.AlbumActivity
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 import com.sush.interview.gallery.model.data.UserAlbum
-import com.sush.interview.gallery.view.UserAlbumsAdapter.Companion.ALBUM
-import com.sush.interview.gallery.view.UserAlbumsAdapter.Companion.USER
+import com.sush.interview.gallery.adapter.UserAlbumsAdapter.Companion.ALBUM
+import com.sush.interview.gallery.adapter.UserAlbumsAdapter.Companion.USER
 import kotlinx.android.synthetic.main.album_item_view.view.*
 import kotlinx.android.synthetic.main.user_item_view.view.*
 
@@ -110,6 +109,7 @@ class UserViewHolder(private val view: View) : UserAlbumViewHolder(view) {
     fun setUser(user: User) {
         this.user = user
         view.username.text = user.name
+        view.email.text = user.email
     }
 }
 

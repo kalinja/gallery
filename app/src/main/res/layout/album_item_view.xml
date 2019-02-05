@@ -11,7 +11,7 @@
 
     <TextView
             android:id="@+id/albumName"
-            android:background="@color/albumHeaderBg"
+            android:background="@color/teal400"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"

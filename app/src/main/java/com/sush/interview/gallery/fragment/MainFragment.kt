@@ -14,7 +14,7 @@ import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.viewmodel.UserAlbumsViewModel
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
-import com.sush.interview.gallery.view.UserAlbumsAdapter
+import com.sush.interview.gallery.adapter.UserAlbumsAdapter
 import kotlinx.android.synthetic.main.fragment_user_list.*
 import javax.inject.Inject
 
