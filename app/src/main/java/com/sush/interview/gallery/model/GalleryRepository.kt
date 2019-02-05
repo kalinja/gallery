@@ -3,21 +3,27 @@ package com.sush.interview.gallery.model
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.Photo
 import com.sush.interview.gallery.model.data.User
-import retrofit2.Retrofit
-import javax.inject.Inject
-import javax.inject.Singleton
-import retrofit2.converter.gson.GsonConverterFactory
-import com.google.gson.GsonBuilder
-import com.google.gson.Gson
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
+/**
+ * Handles web calls to download data.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 @Singleton
 class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
 
+    /**
+     * Gets list of all users.
+     *
+     * @param completion Function which is called after users are loaded, or loading failed.
+     */
     fun getUsers(completion: (List<User>?, Error?) -> Unit) {
 
         val retrofitApi = retrofit.create(RetrofitApi::class.java)
@@ -36,7 +42,11 @@ class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
 
         })
     }
-
+    /**
+     * Gets list of all albums.
+     *
+     * @param completion Function which is called after albums are loaded, or loading failed.
+     */
     fun getAlbums(completion: (List<Album>?, Error?) -> Unit) {
         val retrofitApi = retrofit.create(RetrofitApi::class.java)
 
@@ -54,6 +64,11 @@ class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
         })
     }
 
+    /**
+     * Gets list of all photos.
+     *
+     * @param completion Function which is called after photos are loaded, or loading failed.
+     */
     fun getPhotos(completion: (List<Photo>?, Error?) -> Unit) {
         val retrofitApi = retrofit.create(RetrofitApi::class.java)
 

@@ -9,6 +9,11 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
+/**
+ * Gallery application.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 class GalleryApplication : Application(), HasActivityInjector {
 
     companion object {

@@ -1,15 +1,18 @@
 package com.sush.interview.gallery.dagger
 
-import android.app.Application
 import android.content.Context
 import com.sush.interview.gallery.model.GalleryRepository
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+/**
+ * Provides [Retrofit] instance, [GalleryRepository] instance and application [Context].
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 @Module
 internal class AppModule {
 

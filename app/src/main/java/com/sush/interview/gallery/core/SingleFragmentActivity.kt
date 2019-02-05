@@ -7,8 +7,12 @@ import com.sush.interview.gallery.R
 import kotlinx.android.synthetic.main.activity_single_fragment.*
 
 
-abstract class BaseActivity : AppCompatActivity() {
-
+/**
+ * Base Activity containing single fragment.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
+abstract class SingleFragmentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +31,17 @@ abstract class BaseActivity : AppCompatActivity() {
         fragmentManager.add(R.id.fragmentContainer, getFragment()).commit()
     }
 
+    /**
+     * Gets toolbar title.
+     *
+     * @return Toolbar title.
+     */
     protected abstract fun getToolbarTitle(): String
 
+    /**
+     * Gets Fragment which is attached to this Activity.
+     *
+     * @return Fragment which will be attached.
+     */
     protected abstract fun getFragment(): Fragment
 }

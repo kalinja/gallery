@@ -4,6 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 
+/**
+ * GridView item which forces square view size.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 class GridViewItem : ImageView {
 
     constructor(context: Context) : super(context)

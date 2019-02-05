@@ -2,6 +2,11 @@ package com.sush.interview.gallery.model.data
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Holds user parameters.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 data class User(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,

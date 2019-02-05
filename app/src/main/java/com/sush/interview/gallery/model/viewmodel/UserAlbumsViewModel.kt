@@ -7,6 +7,12 @@ import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 
+/**
+ * ViewModel for loading users and albums.
+ * Holds list of loaded users and albums.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 class UserAlbumsViewModel(private val galleryRepo: GalleryRepository) : ViewModel() {
     var userList = MutableLiveData<List<User>>()
     var albumList = MutableLiveData<List<Album>>()

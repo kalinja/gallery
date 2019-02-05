@@ -1,17 +1,16 @@
 package com.sush.interview.gallery.activity
 
 import android.app.Fragment
-import android.os.Bundle
 import com.sush.interview.gallery.R
-import com.sush.interview.gallery.core.BaseActivity
+import com.sush.interview.gallery.core.SingleFragmentActivity
 import com.sush.interview.gallery.fragment.MainFragment
 
-class MainActivity : BaseActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+/**
+ * Main Activity which displays users and theirs albums.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
+class MainActivity : SingleFragmentActivity() {
     override fun getToolbarTitle(): String {
         return getString(R.string.app_name)
     }

@@ -4,15 +4,26 @@ import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.sush.interview.gallery.R
-import com.sush.interview.gallery.core.BaseActivity
+import com.sush.interview.gallery.core.SingleFragmentActivity
 import com.sush.interview.gallery.fragment.AlbumFragment
 
-class AlbumActivity : BaseActivity() {
+/**
+ * Activity which displays photos from album given by albumId in a grid.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
+class AlbumActivity : SingleFragmentActivity() {
 
     companion object {
         const val EXTRA_ALBUM_ID = "album_id"
         private const val EXTRA_ALBUM_NAME = "album_name"
+        /**
+         * Calls this activity.
+         *
+         * @param callingContext: A Context from which this activity is called.
+         * @param albumId: Id of album to show.
+         * @param albumName: Name of album to show.
+         */
         fun call(callingContext: Context, albumId: Int, albumName: String) {
             val intent = Intent(callingContext, AlbumActivity::class.java)
             intent.putExtra(EXTRA_ALBUM_ID, albumId)

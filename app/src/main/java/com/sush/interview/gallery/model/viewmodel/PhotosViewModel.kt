@@ -6,6 +6,12 @@ import android.arch.lifecycle.ViewModelProvider
 import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Photo
 
+/**
+ * ViewModel for loading photos from [GalleryRepository].
+ * Holds list of loaded photos.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 class PhotosViewModel(private val galleryRepo: GalleryRepository) : ViewModel() {
     var photoList = MutableLiveData<List<Photo>>()
 

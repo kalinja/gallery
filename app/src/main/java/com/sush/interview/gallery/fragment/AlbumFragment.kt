@@ -10,13 +10,18 @@ import android.view.ViewGroup
 import com.sush.interview.gallery.GalleryApplication
 import com.sush.interview.gallery.R
 import com.sush.interview.gallery.activity.AlbumActivity.Companion.EXTRA_ALBUM_ID
+import com.sush.interview.gallery.adapter.ImageAdapter
 import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Photo
 import com.sush.interview.gallery.model.viewmodel.PhotosViewModel
-import com.sush.interview.gallery.adapter.ImageAdapter
 import kotlinx.android.synthetic.main.fragment_album.*
 import javax.inject.Inject
 
+/**
+ * Loads and shows photos for selected album.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 class AlbumFragment : Fragment() {
 
     @Inject
@@ -25,7 +30,6 @@ class AlbumFragment : Fragment() {
     private lateinit var imageAdapter: ImageAdapter
 
     private var albumId = 1
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)

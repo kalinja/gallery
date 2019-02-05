@@ -9,10 +9,21 @@ import com.squareup.picasso.Picasso
 import com.sush.interview.gallery.model.data.Photo
 import com.sush.interview.gallery.view.GridViewItem
 
-class ImageAdapter(val context: Context) : BaseAdapter() {
+/**
+ * Adapter for photos GridView.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
+class ImageAdapter(private val context: Context) : BaseAdapter() {
     private var photos = ArrayList<Photo>()
 
+    /**
+     * Call when new photos are loaded.
+     *
+     * @param photos List of newly loaded photos.
+     */
     fun photosLoaded(photos: List<Photo>) {
+        this.photos.clear()
         this.photos.addAll(photos)
         notifyDataSetChanged()
     }
@@ -22,7 +33,8 @@ class ImageAdapter(val context: Context) : BaseAdapter() {
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = GridViewItem(context)
-            imageView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            imageView.layoutParams =
+                    ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         } else {
             imageView = convertView as GridViewItem
