@@ -1,6 +1,8 @@
 package com.sush.interview.gallery.model.data
 
+import com.google.gson.annotations.SerializedName
+
 data class Geo (
-    val lat: String,
-    val ltg: String
+    @SerializedName("lat") val lat: String,
+    @SerializedName("ltg") val ltg: String
 )
