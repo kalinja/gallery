@@ -1,5 +1,6 @@
 package com.sush.interview.gallery.adapter
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,9 @@ import com.sush.interview.gallery.adapter.UserAlbumsAdapter.Companion.ALBUM
 import com.sush.interview.gallery.adapter.UserAlbumsAdapter.Companion.USER
 import kotlinx.android.synthetic.main.album_item_view.view.*
 import kotlinx.android.synthetic.main.user_item_view.view.*
+import android.net.Uri
+import android.widget.Toast
+
 
 class UserAlbumsAdapter : RecyclerView.Adapter<UserAlbumViewHolder>() {
     private var users: ArrayList<User> = ArrayList()
@@ -110,6 +114,20 @@ class UserViewHolder(private val view: View) : UserAlbumViewHolder(view) {
         this.user = user
         view.username.text = user.name
         view.email.text = user.email
+        view.navigationButton.setOnClickListener {
+            startNavigation()
+        }
+    }
+
+    private fun startNavigation() {
+        val gmmIntentUri = Uri.parse("geo:0,0?q=${user.address.geo.lat},${user.address.geo.lng}")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        if (mapIntent.resolveActivity(view.context.packageManager) != null) {
+            view.context.startActivity(mapIntent)
+        } else {
+            Toast.makeText(view.context, R.string.navigation_app_not_found, Toast.LENGTH_LONG).show()
+        }
     }
 }
 

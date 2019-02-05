@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Gallery</string>
     <string name="album_title">Album</string>
+    <string name="navigation_app_not_found">Navigation app was not found.</string>
 </resources>
