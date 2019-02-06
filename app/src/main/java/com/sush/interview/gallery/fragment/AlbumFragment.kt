@@ -13,7 +13,6 @@ import com.sush.interview.gallery.adapter.ImageAdapter
 import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Photo
 import com.sush.interview.gallery.model.viewmodel.PhotosViewModel
-import com.sush.interview.gallery.utils.NetworkUtils
 import kotlinx.android.synthetic.main.fragment_album.*
 import javax.inject.Inject
 
@@ -49,10 +48,6 @@ class AlbumFragment : RefreshFragment() {
             PhotosViewModel.Factory(galleryRepo)
         ).get(PhotosViewModel::class.java)
 
-        if (!NetworkUtils.isNetworkAvailable(activity)) {
-            showOffline()
-        }
-
         photosViewModel.photoList.observeForever {
             if (it != null) {
                 photosLoaded(it)
@@ -70,14 +65,10 @@ class AlbumFragment : RefreshFragment() {
         galleryView.visibility = View.VISIBLE
     }
 
-    private fun showOffline() {
-        offlineLayout.visibility = View.VISIBLE
+    override fun showOffline() {
+        super.showOffline()
         progress.visibility = View.GONE
         galleryView.visibility = View.GONE
-    }
-
-    private fun hideOffline() {
-        offlineLayout.visibility = View.GONE
     }
 
     override fun refresh() {

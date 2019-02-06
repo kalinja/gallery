@@ -48,9 +48,6 @@ class MainFragment : RefreshFragment() {
                 ViewModelProviders.of(activity as AppCompatActivity, UserAlbumsViewModel.Factory(galleryRepo)).get(
                     UserAlbumsViewModel::class.java
                 )
-        if (!NetworkUtils.isNetworkAvailable(activity)) {
-            showOffline()
-        }
 
         userAlbumsViewModel.userList.observeForever {
             if (it != null) {
@@ -68,7 +65,6 @@ class MainFragment : RefreshFragment() {
             }
         }
     }
-
 
 
     private fun usersLoaded(users: List<User>) {
@@ -95,14 +91,10 @@ class MainFragment : RefreshFragment() {
         userAlbumsAdapter.notifyDataSetChanged()
     }
 
-    private fun showOffline() {
-        offlineLayout.visibility = View.VISIBLE
+    override fun showOffline() {
+        super.showOffline()
         progress.visibility = View.GONE
         recyclerView.visibility = View.GONE
-    }
-
-    private fun hideOffline() {
-        offlineLayout.visibility = View.GONE
     }
 
     override fun refresh() {
