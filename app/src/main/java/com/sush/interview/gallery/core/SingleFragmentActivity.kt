@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.activity_single_fragment.*
  */
 abstract class SingleFragmentActivity : AppCompatActivity() {
 
+    companion object {
+        const val FRAGMENT_TAG = "fragment_attached"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_fragment)
@@ -27,8 +31,10 @@ abstract class SingleFragmentActivity : AppCompatActivity() {
     }
 
     private fun addFragmentToActivity() {
-        val fragmentManager = fragmentManager.beginTransaction()
-        fragmentManager.add(R.id.fragmentContainer, getFragment()).commit()
+        if (fragmentManager.findFragmentByTag(FRAGMENT_TAG) == null) {
+            val transaction = fragmentManager.beginTransaction()
+            transaction.add(R.id.fragmentContainer, getFragment(), FRAGMENT_TAG).commit()
+        }
     }
 
     /**
