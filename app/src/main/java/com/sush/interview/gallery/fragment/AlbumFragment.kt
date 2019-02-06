@@ -1,6 +1,5 @@
 package com.sush.interview.gallery.fragment
 
-import android.app.Fragment
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +13,7 @@ import com.sush.interview.gallery.adapter.ImageAdapter
 import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Photo
 import com.sush.interview.gallery.model.viewmodel.PhotosViewModel
-import com.sush.interview.gallery.view.NetworkUtils
+import com.sush.interview.gallery.utils.NetworkUtils
 import kotlinx.android.synthetic.main.fragment_album.*
 import javax.inject.Inject
 

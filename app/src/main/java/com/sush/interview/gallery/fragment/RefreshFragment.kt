@@ -5,6 +5,11 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.offline_layout.*
 
+/**
+ * Fragment containing refresh button from offline state.
+ *
+ * @author Jakub Kalina (kalina.kuba@gmail.com)
+ */
 abstract class RefreshFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -14,5 +19,8 @@ abstract class RefreshFragment : Fragment() {
         }
     }
 
+    /**
+     * Called when refresh button is clicked.
+     */
     protected abstract fun refresh()
 }
