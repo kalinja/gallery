@@ -69,6 +69,8 @@ class MainFragment : RefreshFragment() {
         }
     }
 
+
+
     private fun usersLoaded(users: List<User>) {
         usersLoaded = true
         userAlbumsAdapter.usersLoaded(users)
@@ -88,6 +90,7 @@ class MainFragment : RefreshFragment() {
     private fun loadingFinished() {
         progress.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
+        hideOffline()
         userAlbumsAdapter.loadingFinished()
         userAlbumsAdapter.notifyDataSetChanged()
     }
@@ -100,12 +103,12 @@ class MainFragment : RefreshFragment() {
 
     private fun hideOffline() {
         offlineLayout.visibility = View.GONE
-        progress.visibility = View.VISIBLE
     }
 
     override fun refresh() {
         userAlbumsViewModel.loadAlbumsFromRepository()
         userAlbumsViewModel.loadUsersFromRepository()
         hideOffline()
+        progress.visibility = View.VISIBLE
     }
 }

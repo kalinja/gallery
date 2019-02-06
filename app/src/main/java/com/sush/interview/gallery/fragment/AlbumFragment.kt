@@ -56,6 +56,7 @@ class AlbumFragment : RefreshFragment() {
         photosViewModel.photoList.observeForever {
             if (it != null) {
                 photosLoaded(it)
+                hideOffline()
             } else {
                 showOffline()
             }
@@ -77,11 +78,11 @@ class AlbumFragment : RefreshFragment() {
 
     private fun hideOffline() {
         offlineLayout.visibility = View.GONE
-        progress.visibility = View.VISIBLE
     }
 
     override fun refresh() {
         photosViewModel.loadPhotosFromRepository()
         hideOffline()
+        progress.visibility = View.VISIBLE
     }
 }

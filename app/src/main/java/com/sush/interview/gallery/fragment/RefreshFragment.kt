@@ -12,6 +12,11 @@ import kotlinx.android.synthetic.main.offline_layout.*
  */
 abstract class RefreshFragment : Fragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         refreshButton.setOnClickListener {
