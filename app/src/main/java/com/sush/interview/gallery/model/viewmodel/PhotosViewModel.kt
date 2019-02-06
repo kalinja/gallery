@@ -19,7 +19,7 @@ class PhotosViewModel(private val galleryRepo: GalleryRepository) : ViewModel() 
         loadPhotosFromRepository()
     }
 
-    private fun loadPhotosFromRepository() {
+    fun loadPhotosFromRepository() {
         galleryRepo.getPhotos { list, _ ->
             photoList.value = list
         }

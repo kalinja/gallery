@@ -1,6 +1,5 @@
 package com.sush.interview.gallery.fragment
 
-import android.app.Fragment
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +14,7 @@ import com.sush.interview.gallery.model.GalleryRepository
 import com.sush.interview.gallery.model.data.Album
 import com.sush.interview.gallery.model.data.User
 import com.sush.interview.gallery.model.viewmodel.UserAlbumsViewModel
+import com.sush.interview.gallery.view.NetworkUtils
 import kotlinx.android.synthetic.main.fragment_user_list.*
 import javax.inject.Inject
 
@@ -23,7 +23,7 @@ import javax.inject.Inject
  *
  * @author Jakub Kalina (kalina.kuba@gmail.com)
  */
-class MainFragment : Fragment() {
+class MainFragment : RefreshFragment() {
 
     @Inject
     lateinit var galleryRepo: GalleryRepository
@@ -48,15 +48,23 @@ class MainFragment : Fragment() {
                 ViewModelProviders.of(activity as AppCompatActivity, UserAlbumsViewModel.Factory(galleryRepo)).get(
                     UserAlbumsViewModel::class.java
                 )
+        if (!NetworkUtils.isNetworkAvailable(activity)) {
+            showOffline()
+        }
+
         userAlbumsViewModel.userList.observeForever {
             if (it != null) {
                 usersLoaded(it)
+            } else {
+                showOffline()
             }
         }
 
         userAlbumsViewModel.albumList.observeForever {
             if (it != null) {
                 albumsLoaded(it)
+            } else {
+                showOffline()
             }
         }
     }
@@ -82,5 +90,22 @@ class MainFragment : Fragment() {
         recyclerView.visibility = View.VISIBLE
         userAlbumsAdapter.loadingFinished()
         userAlbumsAdapter.notifyDataSetChanged()
+    }
+
+    private fun showOffline() {
+        offlineLayout.visibility = View.VISIBLE
+        progress.visibility = View.GONE
+        recyclerView.visibility = View.GONE
+    }
+
+    private fun hideOffline() {
+        offlineLayout.visibility = View.GONE
+        progress.visibility = View.VISIBLE
+    }
+
+    override fun refresh() {
+        userAlbumsViewModel.loadAlbumsFromRepository()
+        userAlbumsViewModel.loadUsersFromRepository()
+        hideOffline()
     }
 }

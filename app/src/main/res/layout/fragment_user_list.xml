@@ -14,6 +14,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+    <include layout="@layout/offline_layout" android:id="@+id/offlineLayout" android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"

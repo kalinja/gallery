@@ -22,13 +22,13 @@ class UserAlbumsViewModel(private val galleryRepo: GalleryRepository) : ViewMode
         loadAlbumsFromRepository()
     }
 
-    private fun loadUsersFromRepository() {
+    fun loadUsersFromRepository() {
         galleryRepo.getUsers { list, _ ->
             userList.value = list
         }
     }
 
-    private fun loadAlbumsFromRepository() {
+    fun loadAlbumsFromRepository() {
         galleryRepo.getAlbums { list, _ ->
             albumList.value = list
         }

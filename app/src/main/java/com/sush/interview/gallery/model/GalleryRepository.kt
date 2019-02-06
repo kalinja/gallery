@@ -31,6 +31,7 @@ class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
         val call = retrofitApi.downloadUsers()
         call.enqueue(object : Callback<List<User>> {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                completion(null, null)
             }
 
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
@@ -53,6 +54,7 @@ class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
         val call = retrofitApi.downloadAlbums()
         call.enqueue(object : Callback<List<Album>> {
             override fun onFailure(call: Call<List<Album>>, t: Throwable) {
+                completion(null, null)
             }
 
             override fun onResponse(call: Call<List<Album>>, response: Response<List<Album>>) {
@@ -75,6 +77,7 @@ class GalleryRepository @Inject constructor(private val retrofit: Retrofit) {
         val call = retrofitApi.downloadPhotos()
         call.enqueue(object : Callback<List<Photo>> {
             override fun onFailure(call: Call<List<Photo>>, t: Throwable) {
+                completion(null, null)
             }
 
             override fun onResponse(call: Call<List<Photo>>, response: Response<List<Photo>>) {
